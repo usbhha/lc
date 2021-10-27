@@ -11,26 +11,37 @@ package com.space._5_longest_repetition;
 public class Main_5_1 {
 
     //正序串 = 逆序串
-    public static String longestPalindrome(String s) {
+    public  String longestPalindrome(String s) {
         String subString = String.valueOf(s.charAt(0)) ;
-        int mid = s.length() / 2 ;
-        int left = mid -1, right = mid +1;
-        char sTemp = s.charAt(mid);
+        int maxLen = 0;
         for (int i = 0; i < s.length(); i++){
-
-            if (sTemp == s.charAt(left)){
-                left--;
+            //奇数个
+            int odd = findLongest(s, i, i);
+            //偶数个
+            int even = findLongest(s, i, i + 1);
+            maxLen = Math.max(odd,even);
+            if ( maxLen > subString.length()){
+                if (maxLen % 2 == 0){
+                    //偶 1 2 3 4 5 6
+                    subString = s.substring(i-maxLen/2+1, i+ maxLen/2+1);
+                }else{
+                    subString = s.substring(i-maxLen/2, i+maxLen/2+1);
+                }
             }
-            while( left>=0 && right <s.length() && s.charAt(left) == s.charAt(right)){
-                left--;
-                right++;
-            }
-
         }
         return subString;
     }
 
+    public int findLongest(String s, int left, int right){
+        while( left>=0 && right <s.length() && s.charAt(left) == s.charAt(right)){
+            left--;
+            right++;
+        }
+        return right-left-1;
+    }
+
     public static void main(String[] args) {
-        System.out.println(longestPalindrome("aacabdkacaa"));
+        Main_5_1 m = new Main_5_1();
+        System.out.println(m.longestPalindrome("aacabdkacaa"));
     }
 }
