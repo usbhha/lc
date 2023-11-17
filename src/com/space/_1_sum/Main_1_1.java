@@ -2,6 +2,7 @@ package com.space._1_sum;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 1. 两数之和
@@ -21,6 +22,9 @@ import java.util.HashMap;
 public class Main_1_1 {
 
     public int[] twoSum(int[] nums, int target) {
+        HashMap<Object, Object> map = new HashMap<>();
+        ConcurrentHashMap<Object, Object> hashMap = new ConcurrentHashMap<>();
+        hashMap.put("","");
         int sum = 0;
         int eqI = 0;
         int i = 0;
