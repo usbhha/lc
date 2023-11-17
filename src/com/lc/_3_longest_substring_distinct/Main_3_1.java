@@ -1,6 +1,4 @@
-package com.space._3_longest_substring_distinct;
-
-import java.util.HashMap;
+package com.lc._3_longest_substring_distinct;
 
 /**
  * 3. 无重复字符的最长子串
@@ -11,7 +9,7 @@ import java.util.HashMap;
  * @author: Feng YuJie
  * @create: 2021/10/13 10:55
  */
-public class Main_3_2 {
+public class Main_3_1 {
 
     /**
      * 输入: s = "pwwkew"
@@ -26,30 +24,28 @@ public class Main_3_2 {
      * @return
      */
     public int lengthOfLongestSubstring(String s) {
-        //1. 在map中维护不重复子串；
-        //2. 查询重复，则删除一个左侧的元素
-        HashMap<Character, Character> map = new HashMap<>();
+        StringBuffer ss = new StringBuffer(s);
+        StringBuffer singleBuffer = new StringBuffer();
         int result = 0;
-        int index = 0;
-        int end = 0;
-        while (end < s.length()){
-            //从左侧删除， 直到重复元素
-            if (map.containsKey(s.charAt(end))){
-                // map中元素重复
-                map.remove(s.charAt(index));
+        while ( result <ss.length()){
+            int index = 0;
+            while (index<s.length()) {
+                singleBuffer.append(ss.charAt(index));
                 index++;
-            }else{
-                map.put(s.charAt(end),s.charAt(end));
-                result = Math.max(result,end-index+1);
-                end++;
+                if(index == ss.length() || singleBuffer.indexOf(String.valueOf(ss.charAt(index))) != -1 ){
+                    break;
+                }
             }
-
+            result = result >  singleBuffer.length() ? result : singleBuffer.length();
+            singleBuffer.setLength(0);
+            ss.delete(0,1);
         }
+        System.out.println(result);
         return result;
     }
 
     public static void main(String[] args) {
-        Main_3_2 m = new Main_3_2();
-        System.out.println(m.lengthOfLongestSubstring("abcabcbb"));;
+        Main_3_1 m = new Main_3_1();
+        m.lengthOfLongestSubstring(" ");
     }
 }

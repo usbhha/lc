@@ -1,4 +1,4 @@
-package com.space._1_sum;
+package com.lc._1_sum;
 
 import java.util.Arrays;
 import java.util.HashMap;

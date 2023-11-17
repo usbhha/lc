@@ -1,4 +1,4 @@
-package com.space._5_longest_repetition;
+package com.lc._5_longest_repetition;
 
 /**
  * 给你一个字符串 s，找到 s 中最长的回文子串。
