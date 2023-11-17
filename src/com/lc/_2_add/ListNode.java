@@ -1,4 +1,4 @@
-package com.space._2_add;
+package com.lc._2_add;
 
 /**
  * Definition for singly-linked list.
